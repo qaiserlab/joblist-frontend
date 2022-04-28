@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { Space, Table, Pagination, Button, Modal, Row, Col, Input, Spin, Checkbox } from 'antd'
+import Link from 'next/link'
+import { Space, Pagination, Button, Modal, Row, Col, Input, Spin, Checkbox } from 'antd'
 import { ReloadOutlined } from "@ant-design/icons"
 import { AxiosError } from 'axios'
 
@@ -16,8 +16,7 @@ interface TSearchParams {
   full_time?: boolean
 }
 
-export default function UserManagement() {
-  const router = useRouter()
+export default function JobList() {
   const pageSize = 10
 
   const { setServerSaid } = useContext(ActivityStore)
@@ -145,9 +144,13 @@ export default function UserManagement() {
               {records.filter((record: any) => (record !== null)).map((record: any) => {
                 return (
                   <div style={{ padding: '8px', borderBottom: 'solid silver 1px' }}>
-                    <a href="javascript:">
-                      <strong>{record.title}</strong>
-                    </a><br />
+                    <Link href={`/job-list/${record.id}`}>
+                      <a href="javascript:">
+                        <strong>{record.title}</strong>
+                      </a>
+                    </Link>
+                    
+                    <br />
                     <small>
                       <span style={{ color: 'gray' }}>{record.location} - </span>
                       <span style={{ color: 'green' }}>{record.type}</span>
