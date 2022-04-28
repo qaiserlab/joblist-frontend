@@ -1,6 +1,7 @@
 {
-  "name": "nextjs-admin",
-  "version": "0.0.1",
+  "name": "joblist-frontend",
+  "version": "1.0.0",
+  "description": "Joblist Frontend",
   "private": true,
   "scripts": {
     "dev": "node ./next-dev",
